@@ -14,3 +14,23 @@ shopping_lists = ["apples", 'bananas', 3, 4.5]
 
 shopping_lists.append("oranges")
 print(shopping_lists)
+
+shopping_lists.insert(2,"lemons")
+print(shopping_lists)
+
+to_do_list.remove("reserach for biology")
+print(to_do_list)
+
+del to_do_list[2]
+print(to_do_list)
+
+to_do_list[0] = "physics homework"
+print(to_do_list)
+
+favorite_colors=['red', 'green', 'blue', 'yellow', 'purple']
+
+fourth_color = favorite_colors[3]
+print(fourth_color)
+
+
+
