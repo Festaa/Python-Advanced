@@ -5,3 +5,4 @@ class MyClass:
 my_class = MyClass()
 
 print(my_class.public_variable)
+
