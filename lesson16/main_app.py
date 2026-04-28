@@ -1,5 +1,5 @@
 import streamlit as st
-from numpy.random import choice
+
 
 if st.button("Click Me"):
     st.write("Button Clicked")
