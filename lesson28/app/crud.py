@@ -1,10 +1,5 @@
-from  typing import List, Optional
+from typing import List, Optional
 import sqlite3
-
-from matplotlib.backend_tools import cursors
-from requests import delete
-
-from lesson2.dictionary import items
 from models import Item
 from database import get_db_connection
 
@@ -12,11 +7,11 @@ def create_item(item: Item) -> Item:
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO items (name, description) VALUES (?,?)",
+        "INSERT INTO items (name, description) VALUES (?, ?)",
         (item.name, item.description)
     )
     conn.commit()
-    item.id =cursor.lastrowid
+    item.id = cursor.lastrowid
     conn.close()
     return item
 
@@ -34,7 +29,7 @@ def get_item(item_id: int) -> Optional[Item]:
         return None
     return Item(**dict(item))
 
-def update_item(item_id: int, item: Item) ->Optional[Item]:
+def update_item(item_id: int, item: Item) -> Optional[Item]:
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
@@ -49,10 +44,10 @@ def update_item(item_id: int, item: Item) ->Optional[Item]:
     item.id = item_id
     return item
 
-def delete_item(item_id: int) ->bool:
+def delete_item(item_id: int) -> bool:
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM items id = ?", (item_id))
+    cursor.execute("DELETE FROM items WHERE id = ?", (item_id,))
     conn.commit()
     deleted = cursor.rowcount
     conn.close()
